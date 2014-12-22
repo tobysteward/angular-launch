@@ -52,7 +52,6 @@ gulp.task('scripts:watch', function () {
     gulp.watch('./src/js/**/*.js', ['scripts']);
 });
 
-
 /**
  * Index
  */
