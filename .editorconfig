@@ -1,0 +1,14 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+root = true
+
+[{*.css,*.sass,*.js}]
+charset = utf-8
+indent_size = 4
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[{package.json,.jshintrc}]
+indent_size = 4
+indent_style = space
