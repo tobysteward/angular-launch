@@ -24,9 +24,7 @@ gulp.task('vendor', function (cb) {
 });
 
 gulp.task('app', function (cb) {
-    gulp.src([
-        './src/js/**/*.js'
-    ])
+    gulp.src('./src/js/**/*.js')
         .pipe(plugins.streamify(plugins.plumber()))
         .pipe(plugins.streamify(plugins.jshint()))
         .pipe(plugins.streamify(plugins.concat('main.js')))
@@ -66,9 +64,7 @@ gulp.task('index', function (cb) {
 });
 
 gulp.task('index:watch', function () {
-    gulp.watch([
-        './src/index.html'
-    ], ['index']);
+    gulp.watch('./src/index.html', ['index']);
 });
 
 gulp.task('index:clean', function (cb) {
@@ -94,9 +90,7 @@ gulp.task('templates', function (cb) {
 });
 
 gulp.task('templates:watch', function () {
-    gulp.watch([
-        './src/views/**/*.html'
-    ], ['templates']);
+    gulp.watch('./src/views/**/*.html', ['templates']);
 });
 
 gulp.task('templates:clean', function (cb) {
