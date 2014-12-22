@@ -2,15 +2,7 @@
   "name": "AngularLaunch",
   "version": "1.0.0",
   "description": "A seed project for AngularJS with Gulp and Bower",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tobysteward/angular-launch.git"
-  },
-  "author": "Toby Steward",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tobysteward/angular-launch/issues"
-  },
   "homepage": "https://github.com/tobysteward/angular-launch",
   "devDependencies": {
     "gulp": "^3.8.10",
