@@ -18,7 +18,7 @@
                 controller: 'TestController',
             })
             .otherwise({
-                redirectTo: '/test1'
+                redirectTo: '/'
             });
     }
 
