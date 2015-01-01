@@ -57,7 +57,7 @@ gulp.task('scripts:watch', function () {
 gulp.task('index', function (cb) {
     gulp.src('./src/index.html')
         .pipe(plugins.plumber())
-        .pipe(plugins.plugins.minifyHtml())
+        .pipe(plugins.minifyHtml())
         .pipe(gulp.dest('./dist/'))
         .on('end', cb)
         .on('error', plugins.util.log);
@@ -78,7 +78,7 @@ gulp.task('index:clean', function (cb) {
 gulp.task('templates', function (cb) {
     gulp.src('./src/views/**/*.html')
         .pipe(plugins.plumber())
-        .pipe(plugins.plugins.minifyHtml())
+        .pipe(plugins.minifyHtml())
         .pipe(plugins.angularTemplatecache({
             root: '/views/',
             module: 'app'
