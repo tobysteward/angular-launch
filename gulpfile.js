@@ -15,9 +15,9 @@ gulp.task('vendor', function (cb) {
         './bower_components/angular/angular.js',
         './bower_components/angular-route/angular-route.js'
     ])
-        .pipe(plugins.streamify(plugins.concat('vendor.js')))
-        .pipe(plugins.streamify(plugins.uglify({ mangle: false })))
-        .pipe(plugins.streamify(plugins.size({ showFiles: true })))
+        .pipe(plugins.concat('vendor.js'))
+        .pipe(plugins.uglify({ mangle: false }))
+        .pipe(plugins.size({ showFiles: true }))
         .pipe(gulp.dest('./dist/js'))
         .on('end', cb)
         .on('error', plugins.util.log);
@@ -25,15 +25,15 @@ gulp.task('vendor', function (cb) {
 
 gulp.task('app', function (cb) {
     gulp.src('./src/js/**/*.js')
-        .pipe(plugins.streamify(plugins.plumber()))
-        .pipe(plugins.streamify(plugins.jshint()))
-        .pipe(plugins.streamify(plugins.concat('main.js')))
-        .pipe(plugins.streamify(plugins.ngAnnotate({
+        .pipe(plugins.plumber())
+        .pipe(plugins.jshint())
+        .pipe(plugins.concat('main.js'))
+        .pipe(plugins.ngAnnotate({
             remove: true,
             add: true,
             single_quotes: true
-        })))
-        .pipe(plugins.streamify(plugins.uglify({ mangle: false })))
+        }))
+        .pipe(plugins.uglify({ mangle: false }))
         .pipe(plugins.size({ showFiles: true }))
         .pipe(gulp.dest('./dist/js'))
         .on('end', cb)
@@ -57,7 +57,7 @@ gulp.task('scripts:watch', function () {
 gulp.task('index', function (cb) {
     gulp.src('./src/index.html')
         .pipe(plugins.plumber())
-        .pipe(plugins.streamify(plugins.minifyHtml()))
+        .pipe(plugins.plugins.minifyHtml())
         .pipe(gulp.dest('./dist/'))
         .on('end', cb)
         .on('error', plugins.util.log);
@@ -78,7 +78,7 @@ gulp.task('index:clean', function (cb) {
 gulp.task('templates', function (cb) {
     gulp.src('./src/views/**/*.html')
         .pipe(plugins.plumber())
-        .pipe(plugins.streamify(plugins.minifyHtml()))
+        .pipe(plugins.plugins.minifyHtml())
         .pipe(plugins.angularTemplatecache({
             root: '/views/',
             module: 'app'
@@ -104,15 +104,15 @@ gulp.task('templates:clean', function (cb) {
 gulp.task('styles', function (cb) {
     gulp.src('./src/sass/main.sass')
         .pipe(plugins.plumber())
-        .pipe(plugins.streamify(plugins.rubySass({
+        .pipe(plugins.rubySass({
             style: 'compressed',
             'sourcemap=none': true,
             loadPath: [
                 path.join(process.cwd(), './src/sass'),
                 path.join(process.cwd(), './bower_components'),
             ]
-        })))
-        .pipe(plugins.streamify(plugins.autoprefixer(['last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'])))
+        }))
+        .pipe(plugins.autoprefixer(['last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']))
         .pipe(plugins.size({ showFiles: true }))
         .pipe(gulp.dest('./dist/css'))
         .on('end', cb)
@@ -133,11 +133,11 @@ gulp.task('styles:clean', function (cb) {
 
 gulp.task('bitmaps', function (cb) {
     gulp.src('./src/img/**/*.{jpg,png,gif}')
-        .pipe(plugins.streamify(plugins.imagemin({
+        .pipe(plugins.imagemin({
             optimizationLevel: 3,
             progressive: true,
             interlaced: true
-        })))
+        }))
         .pipe(plugins.size({ showFiles: true }))
         .pipe(gulp.dest('./dist/img/'))
         .on('end', cb)
@@ -146,7 +146,7 @@ gulp.task('bitmaps', function (cb) {
 
 gulp.task('vectors', function (cb) {
     gulp.src('./src/img/**/*.svg')
-        .pipe(plugins.streamify(plugins.svgmin()))
+        .pipe(plugins.svgmin())
         .pipe(plugins.size({ showFiles: true }))
         .pipe(gulp.dest('./dist/img/'))
         .on('end', cb)
